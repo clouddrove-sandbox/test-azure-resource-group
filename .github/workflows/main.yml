@@ -5,12 +5,12 @@ on:
     types:
       - closed
     branches:
-      - master  # Ensure this is the default branch
-    if: github.event.pull_request.merged == true  # Only trigger on merged PR
+      - master  
+    if: github.event.pull_request.merged == true 
 
 permissions:
-  contents: write  # Ensure the GitHub token has write access to contents
-  discussions: write  # Optional: for creating a release discussion if needed
+  contents: write  
+  discussions: write
 
 jobs:
   release:
@@ -72,7 +72,7 @@ jobs:
 
     - name: Push version bump commit
       run: |
-        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:master  # Push version bump to master
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:master  
 
     - name: Create GitHub tag for the new version
       id: create_tag
@@ -80,7 +80,7 @@ jobs:
         VERSION=$(cat VERSION)
         echo "Creating tag: $VERSION"
         git tag $VERSION  # Create the new tag
-        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} $VERSION  # Push the tag to the remote repository
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} $VERSION 
 
     - name: Get Last Release
       id: last_release
@@ -97,9 +97,9 @@ jobs:
       id: create_release
       uses: softprops/action-gh-release@v2
       with:
-        body_path: ./CHANGELOG.md  # Path to the changelog
+        body_path: ./CHANGELOG.md  
         draft: false
-        tag_name: ${{ steps.version.outputs.NEW_VERSION }}  # Use the newly created version tag
+        tag_name: ${{ steps.version.outputs.NEW_VERSION }}  
 
     - name: Cleanup and Finish
       run: echo "Release $VERSION created successfully."
