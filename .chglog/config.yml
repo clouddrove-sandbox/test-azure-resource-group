@@ -2,7 +2,7 @@ style: github
 template: CHANGELOG.tpl.md
 info:
   title: CHANGELOG
-  repository_url: https://github.com/clouddrove-sandbox/test-azure-resource-group
+    repository_url: https://github.com/clouddrove-sandbox/test-azure-resource-group
 options:
   commits:
     filters:
@@ -18,11 +18,12 @@ options:
       perf: Performance Improvements
       refactor: Code Refactoring
   header:
-    pattern: "^(\\w*)(?:\\(([\\w\\$\\.\\-\\*\\s]*)\\))?\\:\\s(.*)$"
+    pattern: "^((\\w+)\\s?(?:\\(([\\w\\$\\.\\-\\*\\s]*)\\))?\\:\\s(.*))$"
     pattern_maps:
+      - Subject
       - Type
       - Scope
-      - Subject
+      - Message
   notes:
     keywords:
       - BREAKING CHANGE
