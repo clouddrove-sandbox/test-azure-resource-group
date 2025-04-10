@@ -1,0 +1,1 @@
+var.location= "East-us" 
