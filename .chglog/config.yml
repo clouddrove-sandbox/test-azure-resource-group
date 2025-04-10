@@ -2,7 +2,7 @@ style: github
 template: CHANGELOG.tpl.md
 info:
   title: "CHANGELOG:"
-    repository_url: https://github.com/clouddrove-sandbox/test-azure-resource-group
+  repository_url: https://github.com/clouddrove-sandbox/test-azure-resource-group
 options:
   commits:
     filters:
